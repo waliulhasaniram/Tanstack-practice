@@ -1,10 +1,13 @@
+import { NavLink } from "react-router";
+
 const Navbar = () => {
   return (
     <nav className="navbar">
       <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/about">About</a></li>
-        <li><a href="/contact">Contact</a></li>
+        <li><NavLink to="/">Home</NavLink> </li>
+        <li><NavLink to="/about">About</NavLink></li>
+        <li><NavLink to="/contact">Contact</NavLink></li>
+        <li><NavLink to="/fetch_data">Fetch_data</NavLink></li>
       </ul>
     </nav>
   );
