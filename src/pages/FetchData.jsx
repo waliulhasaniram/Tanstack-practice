@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 
 const fetchPOST =async()=> {
@@ -18,10 +17,9 @@ export default function FetchData() {
     refetchOnWindowFocus: false  // Optional: prevent refetch on window focus
   })
 
-    // Optional: Log data when it's available
-  if (data) {
-    console.log('Fetched data:', data);
-  }
+  // if (data) { // Optional: Log data when it's available
+  //   console.log('Fetched data:', data);
+  // }
 
   if (isLoading) {
     return <h1>Loading posts...</h1>;
@@ -30,6 +28,19 @@ export default function FetchData() {
   if (isError) {
     return <h1>Error: {error.message}</h1>;
   }
-  
-  return <h1> Fetch data!</h1>;
+  return (
+    <main className="flex-grow">
+    <div>
+      <h1>Fetched Data</h1>
+      <ul>
+        {data.slice(0, 5).map(post => (
+          <li key={post.id} className="m-4 p-4 bg-black">
+            <h3>{post.title}</h3>
+            <p>{post.body.slice(0, 50)}...</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+    </main>
+  );
 }
