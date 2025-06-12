@@ -9,6 +9,7 @@ import MainLayout from './layout/MianLayout';
 import {QueryClient, QueryClientProvider} from "@tanstack/react-query"
 import FetchData from './pages/FetchData';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
+import FetchOneData from './pages/FetchOneData';
 
 // Create the router configuration
 const router = createBrowserRouter([
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
       {
         path: '/fetch_data',
         element: <FetchData />
+      },
+            {
+        path: '/fetch_one_data/:id',
+        element: <FetchOneData />
       }
     ]
   }
