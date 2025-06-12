@@ -14,7 +14,8 @@ export default function FetchData() {
     queryKey: ['posts'],  // Unique cache key
     queryFn: fetchPOST,  // Fetch function
     retry: 2,             // Retry 2 times on failure
-    refetchOnWindowFocus: false  // Optional: prevent refetch on window focus
+    refetchOnWindowFocus: false,  // Optional: prevent refetch on window focus
+    staleTime: 10000
   })
 
   // if (data) { // Optional: Log data when it's available
@@ -29,14 +30,15 @@ export default function FetchData() {
     return <h1>Error: {error.message}</h1>;
   }
   return (
-    <main className="flex-grow">
+    <main className="">
     <div>
       <h1>Fetched Data</h1>
-      <ul>
-        {data.slice(0, 5).map(post => (
-          <li key={post.id} className="m-4 p-4 bg-black">
+      <ul className="block">
+        {data.slice(0, 10).map(post => (
+          <li key={post.id} className="m-4 p-4 bg-gray-800">
+            <h2>{post.id}</h2>
             <h3>{post.title}</h3>
-            <p>{post.body.slice(0, 50)}...</p>
+            <p>{post.body.slice(0, 40)}...</p>
           </li>
         ))}
       </ul>
